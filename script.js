@@ -1,21 +1,19 @@
-function clearDisplay() {
-    document.getElementById('display').textContent = '0';
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+    
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        
+        const name = form.elements["name"].value;
+        const email = form.elements["email"].value;
+        const message = form.elements["message"].value;
 
-function appendToDisplay(value) {
-    const display = document.getElementById('display');
-    if (display.textContent === '0') {
-        display.textContent = value;
-    } else {
-        display.textContent += value;
-    }
-}
+        if (name && email && message) {
+            alert("Thank you for reaching out, " + name + "!");
+            form.reset();
+        } else {
+            alert("Please fill out all fields.");
+        }
+    });
+});
 
-function calculate() {
-    const display = document.getElementById('display');
-    try {
-        display.textContent = eval(display.textContent) || '0';
-    } catch {
-        display.textContent = 'Error';
-    }
-}
